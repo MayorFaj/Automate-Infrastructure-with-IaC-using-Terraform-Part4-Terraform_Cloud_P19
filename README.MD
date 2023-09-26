@@ -47,17 +47,21 @@ Run
 
 The output will look like this;
 
-![bastion.pkr](./Images/bastion.pkr.png) ![nginx.pkr](./Images/nginx.pkr.png)
+![bastion.pkr](./Images/bastion.pkr.png) 
 
-![ubuntu.pkr](./Images/ubuntu.pkr.png) ![web.pkr](./Images/web.pkr.png)
+![nginx.pkr](./Images/nginx.pkr.png)
+
+![ubuntu.pkr](./Images/ubuntu.pkr.png) 
+
+![web.pkr](./Images/web.pkr.png)
 
 ![AWS AMI](./Images/AWS-AMI.png)
 
-Next step is to configure terraform cloud
+## STEP 2
+Terraform cloud configuration
 
 **Terraform Cloud**
-
-Terraform cloud is a managed service provided by HashiCorp for using Terraform to provision and manage infrastructure in a collaborative and efficient way. Terraform Cloud provides you with Terraform CLI to provision infrastructure, either on demand or in response to various events.
+This is a managed service provided by HashiCorp for using Terraform to provision and manage infrastructure in a collaborative and efficient way. Terraform Cloud provides you with Terraform CLI to provision infrastructure, either on demand or in response to various events.
 If you have a team who works with Terraform, you need a consistent remote environment with remote workflow and shared state to run Terraform commands.
 In summary, Terraform Cloud simplifies the management of infrastructure as code (IaC) and is especially useful for teams working on infrastructure projects collaboratively. It ensures consistency, security, and efficiency in managing infrastructure using Terraform.
 
@@ -79,8 +83,8 @@ We will use version control workflow as the most common and recommended way to r
 
 Make sure to clone down or fork this terraform [repository](https://github.com/MayorFaj/terraformP19-cloud.git) to your work station and edit accordingly to meet your new changes.
 
-Create a new repository in your GitHub account and call it terraform-cloud, push the Terraform codes to the repository.
-**NOTE;**Remember to copy the AMI id created with packer for the bastion, nginx, ubuntu, and webservers to the terraform.auto.tfvars and edit accordingly.
+Create a new repository in your GitHub account you can give it any name, push the terraform codes to the repository.
+**NOTE;**Remember to copy the AMI id created with packer for the bastion, nginx, ubuntu, and webservers to the terraform.auto.tfvars file and edit accordingly.
 
 Go back to your terraform account, Choose version control workflow and you will be prompted to connect your GitHub account to your workspace – follow the prompt and add your newly created repository (terraform-cloud) to the workspace.
 
@@ -116,7 +120,8 @@ This is the what the email notification looks like
 
 ![Terraform email-notification](./Images/terraform-email-notification.png)
 
-**ANSIBLE**
+## STEP 4
+ANSIBLE configuration
 
 Before we proceed with the Ansible section of this project, i would like to explain the concept of Dynamic inventory plugin
 
@@ -206,13 +211,18 @@ Go ahead , clone this [ansible repo](https://github.com/MayorFaj/Ansible-P19.git
 **Take note;** 
 You need to edit the `EFS access point` and the `RDS endpoint` for the tooling and wordpress. Open the roles/<tooling><wordpress>/tasks/main.yml and setup-db.yml and edit accordingly.
 
-![aws-efs-access-point](./Images/efs-access-point.png) ![access-point-edit](./Images/efs-access-edit.png)
+![aws-efs-access-point](./Images/efs-access-point.png) 
 
-![RDS-endpoint](./Images/RDS-endpoint.png) ![RDS-edit](./)
+![access-point-edit](./Images/efs-access-edit.png)
 
-THere is need to edit the internal load balancer DNS name in the nginx conf as well . This is how our proxy server knows where it is routing traffic to and from. Open the roles/nginx/templates/nginx.conf.j2 , edit accordingly.
+![RDS-endpoint](./Images/RDS-endpoint.png) 
 
-![aws-int-alb](./Images/int-alb-endpoint.png) ![int-alb-edit](./Images/int-alb-edit.png)
+
+We also need to edit the internal load balancer DNS name in the nginx conf as well . This is how our proxy server knows where it is routing traffic to and from. Open the roles/nginx/templates/nginx.conf.j2 , edit accordingly.
+
+![aws-int-alb](./Images/int-alb-endpoint.png) 
+
+![int-alb-edit](./Images/int-alb-edit.png)
 
 **Attention!!!** Ansible has modules and plugins that allow it to interact with AWS services. These modules rely on Python libraries like `botocore` and `boto3`  to communicate with AWS APIs. Without this, Ansible cannot establish connections to AWS services, making AWS integration impossible. To confirm this, let's change directory into the ansible repo `Ansible-P19` and run our Ansible-playbook command as usual, we will encounter error.
 
@@ -301,7 +311,6 @@ It has been confirmed that all of our target group instances are healthy, and re
 
 Let's access our `applications` from the browser through the domain name.
 
+![tooling](./Images/tooling-web.png)
 
-Automate-Infrastructure-With-IaC-using-Terraform-Part4–Terraform_Cloud
-
-Automate-Infrastructure-with-IaC-using-Terraform-Part4-Terraform_Cloud
+![wordpress](./Images/wordpress-web.png)
