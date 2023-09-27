@@ -1,6 +1,10 @@
 
 In previous project, we explored `AWS S3 backend` as the remote backend to store Terraform state files and refactored our terraform codes into modules and as a result the introduction of modules into our codebase it saved us time and reduce costly errors by re-using configuration written either by yourself, other members of your team, or other Terraform practitioners who have published modules for you to use.
 
+Our Architechture
+
+![Secure architecture](./Images/Secure%20Infrastructure%20Architeture%20for%202%20Companies%20Website.png)
+
 For this project we are going to explore another option, which is the `terraform cloud`.
 We will also use `Packer` to build our machine images, and `Ansible` to configure the infrastructure.
 
