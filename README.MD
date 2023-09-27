@@ -314,3 +314,9 @@ Let's access our `applications` from the browser through the domain name.
 ![tooling](./Images/tooling-web.png)
 
 ![wordpress](./Images/wordpress-web.png)
+
+Destroy infrastructure.
+
+![Terraform Destroy](./Images/Terraform-Destroy.png)
+
+
